@@ -1,0 +1,16 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k}{def} \PYG{n+nf}{weight\PYGZus{}init}\PYG{p}{(}\PYG{n}{m}\PYG{p}{):}
+    \PYG{k+kn}{from} \PYG{n+nn}{torch} \PYG{k+kn}{import} \PYG{n}{nn}
+
+    \PYG{k}{try}\PYG{p}{:}
+        \PYG{n}{nn}\PYG{o}{.}\PYG{n}{init}\PYG{o}{.}\PYG{n}{xavier\PYGZus{}uniform\PYGZus{}}\PYG{p}{(}\PYG{n}{m}\PYG{o}{.}\PYG{n}{weight}\PYG{p}{)}
+    \PYG{k}{except} \PYG{n+ne}{AttributeError}\PYG{p}{:}
+        \PYG{k}{pass}
+
+    \PYG{k}{try}\PYG{p}{:}
+        \PYG{n}{nn}\PYG{o}{.}\PYG{n}{init}\PYG{o}{.}\PYG{n}{constant\PYGZus{}}\PYG{p}{(}\PYG{n}{m}\PYG{o}{.}\PYG{n}{bias}\PYG{p}{,} \PYG{l+m+mi}{0}\PYG{p}{)}
+    \PYG{k}{except} \PYG{n+ne}{AttributeError}\PYG{p}{:}
+        \PYG{k}{pass}
+
+\PYG{n}{net}\PYG{o}{.}\PYG{n}{apply}\PYG{p}{(}\PYG{n}{weight\PYGZus{}init}\PYG{p}{)}  \PYG{c+c1}{\PYGZsh{} net 为某种模型}
+\end{Verbatim}
